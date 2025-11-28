@@ -19,3 +19,6 @@ A comprehensive collection of **advanced SQL scripts** and use cases showcasing 
 **Clone the repository:**
 git clone https://github.com/AHMEDM0369/SQL-Data-Analytics-Project.git
 
+## Contact
+-   Name - ahmedm
+-   Email - mrahmedm09@gmail.com
