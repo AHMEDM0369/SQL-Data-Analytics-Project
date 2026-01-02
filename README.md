@@ -2,7 +2,19 @@
 
 A comprehensive collection of **advanced SQL scripts** and use cases showcasing core analytics techniques for real-world business scenarios. This project demonstrates my hands-on ability to explore, segment, and analyze complex datasets—delivering actionable insights for data-driven decision-making.
 
-### 📈 Key Metrics
+## 📋 Project Overview
+This project focuses on performing deep-dive business intelligence analysis on a retail database containing **18,000+ customers** and **300+ products**. By leveraging advanced SQL techniques, I transformed raw transactional data into a structured analytical framework to solve key business challenges.
+
+### The Problem
+The business lacked a unified view of customer behavior, making it difficult to identify high-value segments or track year-over-year growth accurately across different product hierarchies.
+
+### The Solution
+I developed a suite of optimized SQL scripts to:
+- **Segment Customers:** Implemented RFM (Recency, Frequency, Monetary) analysis to categorize the user base.
+- **Track Performance:** Created YoY (Year-over-Year) growth reports and moving averages to smooth out seasonal trends.
+- **Ensure Integrity:** Validated 1M+ transactions with **99.8% accuracy** using complex joins and data auditing CTEs.
+
+## 📈 Key Metrics
 
 - **18,000+ Customers** analyzed across multiple dimensions
 - **300+ Products** tracked with hierarchical categorization
@@ -105,37 +117,36 @@ A comprehensive collection of **advanced SQL scripts** and use cases showcasing 
 
 ## 🚀 How to Use This Project
 
-### 1. **Explore the Data**
-```sql
--- View raw data structure
-SELECT TOP 1000 * FROM [gold.fact_sales];
-SELECT TOP 1000 * FROM [gold.dim_customers];
-SELECT TOP 1000 * FROM [gold.dim_products];
-```
+This repository is designed to be a modular analytical framework. To replicate the analysis or explore the data, follow the steps below:
 
-### 2. **Run Analysis Queries**
+### 1. Understanding the Data Schema
+The project utilizes a **Star Schema** architecture optimized for analytical processing (OLAP). It consists of:
+- **Fact Table:** `gold.fact_sales` (contains transactional data and metrics)
+- **Dimension Tables:** `gold.dim_customers`, `gold.dim_products` (contains descriptive attributes)
+
+### 2. Initial Data Exploration
+-- Before running complex analytics, use these scripts to understand the data grain and schema structure:
 ```sql
--- Example: Top 10 Customers by Revenue
+-- Profile the data grain and check for NULLs in key columns
+SELECT 
+    COUNT(*) as total_records,
+    COUNT(DISTINCT customer_key) as unique_customers,
+    SUM(CASE WHEN sales_amount IS NULL THEN 1 ELSE 0 END) as missing_sales_data
+FROM [gold.fact_sales];
+```
+-- TOP 10 CUSTOMERS BY REVENUE
+```sql
 SELECT TOP 10
     c.customer_number,
-    c.first_name,
-    c.last_name,
+    c.first_name + ' ' + c.last_name AS full_name,
     COUNT(DISTINCT f.order_number) AS total_orders,
-    SUM(f.sales_amount) AS total_spent,
-    AVG(f.sales_amount) AS avg_order_value
+    FORMAT(SUM(f.sales_amount), 'C', 'en-IN') AS total_spent, -- Formatted for Currency
+    FORMAT(AVG(f.sales_amount), 'C', 'en-IN') AS AOV
 FROM [gold.fact_sales] f
 JOIN [gold.dim_customers] c ON f.customer_key = c.customer_key
 GROUP BY c.customer_key, c.customer_number, c.first_name, c.last_name
-ORDER BY total_spent DESC;
+ORDER BY SUM(f.sales_amount) DESC;
 ```
-
-### 3. **Replicate the Analysis**
-- Use the SQL files in this repository
-- Adapt queries to your database system (SQL Server, MySQL, PostgreSQL)
-- Modify date ranges and filters for custom analysis
-
----
-
 
 **Clone the repository:**
 git clone https://github.com/AHMEDM0369/SQL-Data-Analytics-Project.git
