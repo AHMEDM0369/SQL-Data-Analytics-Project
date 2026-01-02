@@ -103,9 +103,6 @@ A comprehensive collection of **advanced SQL scripts** and use cases showcasing 
 
 ---
 
-**Clone the repository:**
-git clone https://github.com/AHMEDM0369/SQL-Data-Analytics-Project.git
-
 ## 🚀 How to Use This Project
 
 ### 1. **Explore the Data**
@@ -139,6 +136,9 @@ ORDER BY total_spent DESC;
 
 ---
 
+
+**Clone the repository:**
+git clone https://github.com/AHMEDM0369/SQL-Data-Analytics-Project.git
 
 
 ## Contact
