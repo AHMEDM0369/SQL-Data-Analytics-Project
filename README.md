@@ -8,6 +8,14 @@ A comprehensive collection of **advanced SQL scripts** and use cases showcasing 
 - **300+ Products** tracked with hierarchical categorization
 - **99.8% Query Accuracy** achieved through rigorous data validation
 
+## 🔧 Technical Stack
+
+### SQL & Database
+- **Primary Database**: SQL Server / SQLite
+- **Advanced Techniques**: Window Functions, CTEs, Complex Joins, Subqueries
+- **Query Performance**: EXPLAIN ANALYZE, Index optimization, Query tuning
+- **Data Validation**: Referential integrity check
+
 ## 📊 Example Analytical Techniques
 
 - Exploring data distributions and descriptive statistics
@@ -16,7 +24,9 @@ A comprehensive collection of **advanced SQL scripts** and use cases showcasing 
 - Benchmarking, performance rating, and KPI dashboards
 - Advanced SQL for cohorts, partitions, and moving metrics
 
-## 🔧 Technical Stack
+## 🔧 Analytical Techniques Implemented
+
+![Analytical Techniques Implemented](images/analytics_steps.png)
 
 ### 1. **Window Functions & Ranking**
 - `ROW_NUMBER()`: Unique sequence numbering for customer segmentation
